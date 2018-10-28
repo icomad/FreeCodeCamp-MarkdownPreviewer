@@ -1,0 +1,118 @@
+html, body, #root{
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100%;
+}
+
+body{
+  font-family: $base-font;
+  font-size: $base-font-size;
+  transition: $base-transition;
+}
+
+header{
+  text-align: center;
+}
+
+.toggle-theme-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 45px;
+}
+
+.container{
+  max-width: 350px;
+  height: 100%;
+  margin: auto;
+  padding: 20px;
+}
+
+.grid{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-row-gap: 25px;
+  grid-template-areas:
+  "editor"
+  "preview";
+}
+
+.editor-container{
+  grid-area: editor;
+  box-shadow: 0px 0px 15px 2px rgba(0,0,0,.5);
+  position: sticky;
+  top: 0;
+  transition: $base-transition;
+  transform: translateZ(15px);
+}
+
+.toolbar{
+  box-sizing: border-box;
+  padding: 5px;
+  transition: $base-transition;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+#editor{
+  font-family: $base-font;
+  font-size: .8em;
+  width: 100%;
+  min-height: 30vh;
+  box-sizing: border-box;
+  padding: 10px;
+  appearance: none;
+  border-radius: 0;
+  resize: vertical;
+  border: none;
+  transition: $base-transition;
+  &:focus{
+    outline: none;
+  }
+}
+
+@media only screen and (min-width: 600px){
+  .container{
+    max-width: 500px;
+  }
+}
+
+@media only screen and (min-width: 786px){
+  .container{
+    max-width: 680px;
+  }
+}
+
+@media only screen and (min-width: 992px){
+  .container{
+    max-width: 892px;
+  }
+}
+
+@media only screen and (min-width: 1200px){
+  .container{
+    max-width: 1100px;
+  }
+  .editor-container{
+    top: 45px;
+  }
+  .grid{
+    width: 100%;
+    align-items: flex-start;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 25px;
+    grid-template-areas:
+    "editor preview";
+  }
+}
+
+@media only screen and (min-width: 1440px){
+  .container{
+    max-width: 1300px;
+  }
+}

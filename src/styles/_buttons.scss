@@ -1,0 +1,46 @@
+.toggle-theme-button{
+  padding: 5px 25px;
+  cursor: pointer;
+  border: 1px solid;
+  border-radius: 5px;
+  background: transparent;
+  transition: all .5s ease-in-out;
+  &:focus{
+    outline: none;
+  }
+}
+
+.t--light .toggle-theme-button{
+  border-color: $base-black;
+  color: $base-black;
+  &:hover{
+    color: $base-white;
+    border-color: $base-white;
+    background: $base-black;
+  }
+}
+.t--dark .toggle-theme-button{
+  border-color: $base-white;
+  color: $base-white;
+  &:hover{
+    color: $base-black;
+    border-color: $base-black;
+    background: $base-white;
+  }
+}
+
+.expand-button{
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 0;
+  font-size: 1.1em;
+  color: inherit;
+  &:hover{
+    color: #99b1ac;
+  }
+  &:focus{
+    outline: none;
+  }
+}

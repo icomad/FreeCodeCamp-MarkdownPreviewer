@@ -1,0 +1,42 @@
+$base-transition: background .5s ease-in-out, color .5s ease-in-out;
+
+.t--light{
+  color: $base-black;
+  background: $base-white;
+
+  .editor-container{
+    background: lighten($base-white, 10%);
+    color: darken($base-black, 40%);
+  }
+
+  .toolbar{
+    background: lighten($base-black, 20%);
+    color: lighten($base-white, 10%);
+  }
+
+  #editor{
+    background: lighten($base-white, 10%);
+    color: darken($base-black, 40%);
+  }
+
+}
+
+.t--dark{
+  color: $base-white;
+  background: $base-black;
+
+  .editor-container{
+    background: darken($base-white, 60%);
+    color: lighten($base-black, 70%);
+  }
+
+  .toolbar{
+    background: $base-white;
+    color: $base-black;
+  }
+
+  #editor{
+    background: darken($base-white, 60%);
+    color: lighten($base-black, 70%);
+  }
+}
