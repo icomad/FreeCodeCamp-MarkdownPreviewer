@@ -10,13 +10,90 @@
   min-height: 30vh;
 
   code{
+    font-size: .9em;
     display: inline-block;
+    border-radius: 15px;
+    padding: 5px;
     max-width: 100%;
-    font-weight: bold;
     overflow: scroll;
+    margin-bottom: -7px;
   }
 
   img{
     max-width: 100%;
+  }
+
+  a{
+    text-decoration: none;
+    &:hover{
+      text-decoration: underline;
+    }
+    &:focus{
+      outline: none;
+    }
+  }
+
+  blockquote {
+    border-left: 2px solid;
+    padding-left: 5px;
+    margin-left: 25px;
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+
+  td,
+  th {
+    border: 1px solid;
+    padding: 10px;
+  }
+}
+
+.t--light .preview{
+  code{
+    background: lighten($grey, 5%);
+    color: $blue;
+  }
+
+  blockquote{
+    border-color: $alga;
+    color: $alga;
+  }
+
+  a{
+    color: $granata;
+    &:hover{
+      color: lighten($granata, 30%);
+    }
+  }
+
+  td,
+  th{
+    border-color: $base-black;
+  }
+}
+
+.t--dark .preview{
+  code{
+    background: lighten($grey, 0%);
+    color: $blue;
+  }
+
+  blockquote{
+    border-color: lighten($alga, 10%);
+    color: lighten($alga, 20%);
+  }
+
+  a{
+    color: $red;
+    &:hover{
+      color: lighten($red, 30%);
+    }
+  }
+
+  td,
+  th{
+    border-color: $base-white;
   }
 }
