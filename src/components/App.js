@@ -4,6 +4,7 @@ import breaks from 'remark-breaks';
 
 import ThemeToggle from './ThemeToggle';
 import Editor from './Editor';
+import Toolbar from './Toolbar';
 
 const Header = () => (
   <header>
@@ -17,7 +18,8 @@ export class App extends Component {
 
     this.state = {
       markdown: markdown,
-      icon: 'fa-plus',
+      editorIcon: 'fa-plus',
+      prevIcon: 'fa-plus',
     }
   }
 
@@ -28,7 +30,7 @@ export class App extends Component {
   expandEditor = () => {
     const grid = document.querySelector('.grid');
     const editor = document.getElementById('editor');
-    const preview = document.getElementById('preview');
+    const preview = document.getElementById('preview').parentElement;
     if (preview.style.display === 'none') {
       editor.removeAttribute('style');
       preview.removeAttribute('style');
@@ -42,30 +44,6 @@ export class App extends Component {
       grid.style.alignItems = 'initial';
       grid.style.gridTemplateAreas = '"editor"';
       this.setState({ icon: 'fa-minus' });
-    }
-  }
-
-  render() {
-    const { markdown, icon } = this.state;
-    return (
-      <div className='container'>
-        <Header />
-        <ThemeToggle />
-        <div className='grid'>
-          <Editor markdown={markdown} editorUpdate={this.editorUpdate} icon={icon} expandEditor={this.expandEditor} />
-          <Markdown source={this.state.markdown} escapeHtml={false} className='preview' linkTarget='_blank' renderers={{ root: rootComponent }} plugins={[breaks]} someProps={{ test: 'success' }} />
-        </div>
-      </div>
-    )
-  }
-}
-
-class rootComponent extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      icon: 'fa-plus',
     }
   }
 
@@ -90,16 +68,28 @@ class rootComponent extends Component {
   }
 
   render() {
+    const { markdown, editorIcon, prevIcon } = this.state;
     return (
-      <div {...this.props} id='preview'>
-        <div className='toolbar-prev'>
-          <button className='expand-button' onClick={this.expandPreview}><i className={"fas " + this.state.icon}></i></button>
+      <div className='container'>
+        <Header />
+        <ThemeToggle />
+        <div className='grid'>
+          <Editor markdown={markdown} editorUpdate={this.editorUpdate} icon={editorIcon} expandEditor={this.expandEditor} />
+          <div id='preview-container'>
+            <Toolbar expand={this.expandPreview} icon={prevIcon}>Preview</Toolbar>
+            <Markdown source={this.state.markdown} escapeHtml={false} className='preview' linkTarget='_blank' renderers={{ root: rootComponent }} plugins={[breaks]} />
+          </div>
         </div>
-        {this.props.children}
       </div>
     )
   }
 }
+
+const rootComponent = (props) => (
+  <div {...props} id='preview'>
+    {props.children}
+  </div>
+)
 
 const markdown =
   `# Welcome to my React Markdown Previewer!
